@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Preparação do Ambiente') {
             steps {
@@ -31,7 +31,6 @@ pipeline {
                 sh 'python chat_bot.py'
             }
         }
-    }
     }
 }
 environment {
