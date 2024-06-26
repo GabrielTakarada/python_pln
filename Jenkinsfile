@@ -10,7 +10,7 @@ pipeline {
 
         stage('Execução do Teste Levenshtein') {
             steps {
-                sh 'python3 levenshtein_teste.py'
+                bat 'python3 levenshtein_teste.py'
             }
         }
 
@@ -28,11 +28,12 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                sh 'python chat_bot.py'
+                bat 'python chat_bot.py'
             }
         }
     }
 }
+
 environment {
     PATH = "C:\\Windows\\System32;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
 }
