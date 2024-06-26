@@ -1,5 +1,5 @@
 pipeline {
-    agent any {
+    agent any{
         docker {
             image 'devopsjourney1/myjenkinsagents:python' 
         }
