@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+    PATH = "C:\\Windows\\System32;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
+}
+
     stages {
         stage('Preparação do Ambiente') {
             steps {
@@ -10,7 +14,7 @@ pipeline {
 
         stage('Execução do Teste Levenshtein') {
             steps {
-                bat 'python3 levenshtein_teste.py'
+                bat 'python levenshtein_teste.py'
             }
         }
 
@@ -34,6 +38,3 @@ pipeline {
     }
 }
 
-environment {
-    PATH = "C:\\Windows\\System32;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
-}
