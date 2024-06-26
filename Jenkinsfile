@@ -3,7 +3,7 @@ pipeline {
         docker {
             image 'devopsjourney1/myjenkinsagents:python' 
         }
-    }
+    
     stages {
         stage('Preparação do Ambiente') {
             steps {
@@ -34,6 +34,7 @@ pipeline {
                 sh 'python chat_bot.py'
             }
         }
+    }
     }
 }
 environment {
