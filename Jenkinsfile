@@ -1,5 +1,5 @@
 pipeline {
-    agent {
+    agent any {
         docker {
             image 'devopsjourney1/myjenkinsagents:python' 
         }
@@ -35,4 +35,7 @@ pipeline {
             }
         }
     }
+}
+environment {
+    PATH = "C:\\Windows\\System32;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Usuários\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
 }
