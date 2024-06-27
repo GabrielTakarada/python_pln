@@ -2,8 +2,12 @@ pipeline {
     agent any
 
     environment {
-    PATH = "C:\\Windows\\System32;C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
-}
+        PATH = "C:\\Windows\\System32;C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
+    }
+
+    parameters {
+        string(name: 'PERGUNTA', defaultValue: 'Quem é você?', description: 'Pergunta para o chatbot')
+    }
 
     stages {
         stage('Preparação do Ambiente') {
@@ -32,9 +36,8 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                bat 'python chat_bot.py'
+                bat "python chat_bot.py \"${params.PERGUNTA}\""
             }
         }
     }
 }
-
