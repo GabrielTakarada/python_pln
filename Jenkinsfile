@@ -6,7 +6,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'PERGUNTA', defaultValue: 'Quem é você?', description: 'Pergunta para o chatbot')
+        string(name: 'PERGUNTA', defaultValue: '', description: 'Digite a pergunta para o chatbot')
     }
 
     stages {
