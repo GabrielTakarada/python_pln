@@ -29,7 +29,7 @@ if __name__ == "__main__":
         print("Erro: Nenhuma pergunta fornecida.")
         sys.exit(1)
 
-    perguntas_respostas = carregar_perguntas("perguntas.txt", encoding='utf-8')
+    perguntas_respostas = carregar_perguntas("perguntas.txt")
     limiar_distancia = 10
     resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
     print("Resposta:", resposta)
