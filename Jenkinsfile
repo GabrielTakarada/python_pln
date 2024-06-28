@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         PATH = "C:\\Windows\\System32;C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python312;C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
+        TEMP_FILE = "chatbot_output.txt"
     }
 
     parameters {
@@ -36,7 +37,21 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                bat "python chat_bot.py \"${params.PERGUNTA}\""
+                bat "python chat_bot.py \"${params.PERGUNTA}\" > ${env.TEMP_FILE}"
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                def resposta = readFile("${env.TEMP_FILE}").trim()
+                emailext (
+                    subject: "Resposta do Chatbot",
+                    body: "A resposta para a pergunta '${params.PERGUNTA}' é:\n${resposta}",
+                    to: "gabrieltakarada@gmail.com",
+                    attachLog: true
+                )
             }
         }
     }
